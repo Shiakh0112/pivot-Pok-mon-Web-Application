@@ -8,7 +8,7 @@ import { usePokemonContext } from "../context/PokemonContext";
 interface Pokemon {
   name: string;
   url: string;
-  id: number;
+  id: number; // Ensure that id is always a number
 }
 
 interface PokemonApiResponse {
@@ -45,7 +45,7 @@ export const PokedexGrid = () => {
           const filtered = response.data.pokemon.map((entry) => ({
             name: entry.pokemon.name,
             url: entry.pokemon.url,
-            id: extractPokemonId(entry.pokemon.url),
+            id: extractPokemonId(entry.pokemon.url) ?? -1, // Ensure a valid ID
           }));
           setPokemons(filtered);
           setTotalPokemons(filtered.length);
