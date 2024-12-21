@@ -11,6 +11,19 @@ interface Pokemon {
   id: number;
 }
 
+interface PokemonApiResponse {
+  results: {
+    name: string;
+    url: string;
+  }[];
+  pokemon?: {
+    pokemon: {
+      name: string;
+      url: string;
+    };
+  }[];
+}
+
 export const PokedexGrid = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const { filterType, currentPage, setCurrentPage } = usePokemonContext();
@@ -25,11 +38,11 @@ export const PokedexGrid = () => {
           url = `https://pokeapi.co/api/v2/type/${filterType}`;
         }
 
-        const response = await axios.get(url);
+        const response = await axios.get<PokemonApiResponse>(url);
 
-        if (filterType) {
+        if (filterType && response.data.pokemon) {
           // Filter response for Pokémon by type
-          const filtered = response.data.pokemon.map((entry: any) => ({
+          const filtered = response.data.pokemon.map((entry) => ({
             name: entry.pokemon.name,
             url: entry.pokemon.url,
             id: extractPokemonId(entry.pokemon.url),
@@ -37,13 +50,11 @@ export const PokedexGrid = () => {
           setPokemons(filtered);
           setTotalPokemons(filtered.length);
         } else {
-          const allPokemons = response.data.results.map(
-            (pokemon: any, index: number) => ({
-              name: pokemon.name,
-              url: pokemon.url,
-              id: index + 1,
-            })
-          );
+          const allPokemons = response.data.results.map((pokemon, index) => ({
+            name: pokemon.name,
+            url: pokemon.url,
+            id: index + 1,
+          }));
           setPokemons(allPokemons);
           setTotalPokemons(allPokemons.length);
         }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+
 interface PokemonCardProps {
   id: number;
   name: string;
@@ -14,7 +15,7 @@ export const PokemonCard = ({ id, name, imageUrl }: PokemonCardProps) => {
     >
       <div className="flex flex-col items-center">
         <div className="relative">
-          <img
+          <Image
             src={imageUrl}
             alt={name}
             width={200}
