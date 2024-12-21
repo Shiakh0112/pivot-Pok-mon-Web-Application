@@ -93,9 +93,7 @@ export const PokedexGrid = () => {
       <div className="flex justify-center mt-4">
         <button
           disabled={currentPage === 1}
-          onClick={() =>
-            setCurrentPage((prevPage) => (prevPage > 1 ? prevPage - 1 : 1))
-          }
+          onClick={() => setCurrentPage(currentPage > 1 ? currentPage - 1 : 1)}
           className="px-4 py-2 bg-indigo-500 text-white rounded-lg disabled:bg-indigo-300"
         >
           Previous
@@ -103,10 +101,10 @@ export const PokedexGrid = () => {
         <button
           disabled={currentPage * ITEMS_PER_PAGE >= totalPokemons}
           onClick={() =>
-            setCurrentPage((prevPage) =>
-              prevPage * ITEMS_PER_PAGE < totalPokemons
-                ? prevPage + 1
-                : prevPage
+            setCurrentPage(
+              currentPage * ITEMS_PER_PAGE < totalPokemons
+                ? currentPage + 1
+                : currentPage
             )
           }
           className="px-4 py-2 bg-indigo-500 text-white rounded-lg disabled:bg-indigo-300 ml-4"
