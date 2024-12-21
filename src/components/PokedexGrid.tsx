@@ -83,17 +83,22 @@ export const PokedexGrid = () => {
         <button
           disabled={currentPage === 1}
           onClick={() =>
-            setCurrentPage((prev: Number) => Math.max(prev - 1, 1))
+            setCurrentPage((prevPage) => (prevPage > 1 ? prevPage - 1 : 1))
           }
-          className="bg-gray-300 px-4 py-2 rounded-md mr-2"
+          className="px-4 py-2 bg-indigo-500 text-white rounded-lg disabled:bg-indigo-300"
         >
           Previous
         </button>
-        <span className="px-4 py-2">{`Page ${currentPage}`}</span>
         <button
           disabled={currentPage * ITEMS_PER_PAGE >= totalPokemons}
-          onClick={() => setCurrentPage((prev) => prev + 1)}
-          className="bg-gray-300 px-4 py-2 rounded-md"
+          onClick={() =>
+            setCurrentPage((prevPage) =>
+              prevPage * ITEMS_PER_PAGE < totalPokemons
+                ? prevPage + 1
+                : prevPage
+            )
+          }
+          className="px-4 py-2 bg-indigo-500 text-white rounded-lg disabled:bg-indigo-300 ml-4"
         >
           Next
         </button>

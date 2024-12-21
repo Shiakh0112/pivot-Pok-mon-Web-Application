@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import Image from "next/image";
 interface PokemonCardProps {
   id: number;
   name: string;
@@ -17,6 +17,8 @@ export const PokemonCard = ({ id, name, imageUrl }: PokemonCardProps) => {
           <img
             src={imageUrl}
             alt={name}
+            width={200}
+            height={200}
             className="w-36 h-36 object-cover rounded-full border-4 border-gray-200 group-hover:border-indigo-400 transition-all"
           />
           <div className="absolute inset-0 rounded-full bg-indigo-200 opacity-0 group-hover:opacity-25 transition-all"></div>

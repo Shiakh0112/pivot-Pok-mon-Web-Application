@@ -3,10 +3,25 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import axios from "axios";
+import Image from "next/image";
+
+interface Pokemon {
+  name: string;
+  sprites: {
+    other: {
+      "official-artwork": {
+        front_default: string;
+      };
+    };
+  };
+  height: number;
+  weight: number;
+  base_experience: number;
+}
 
 export default function PokemonDetailsPage() {
   const { id } = useParams();
-  const [pokemon, setPokemon] = useState<any>(null);
+  const [pokemon, setPokemon] = useState<Pokemon | null>(null);
 
   useEffect(() => {
     const fetchPokemonDetails = async () => {
@@ -25,23 +40,25 @@ export default function PokemonDetailsPage() {
 
   if (!pokemon) {
     return (
-      <div className="flex justify-center items-center h-screen ">
+      <div className="flex justify-center items-center h-screen">
         <p className="text-xl font-medium animate-pulse">Loading...</p>
       </div>
     );
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-50 to-indigo-100 p-6 ">
+    <main className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-50 to-indigo-100 p-6">
       <div className="max-w-xl w-full bg-white shadow-lg rounded-lg overflow-hidden p-6">
         <h1 className="text-4xl font-extrabold text-center capitalize text-indigo-600 mb-6">
           {pokemon.name}
         </h1>
         <div className="flex justify-center mb-6">
-          <img
+          <Image
             src={pokemon.sprites.other["official-artwork"].front_default}
             alt={pokemon.name}
-            className="w-48 h-48 object-contain drop-shadow-md"
+            width={192}
+            height={192}
+            className="object-contain drop-shadow-md"
           />
         </div>
         <div className="bg-indigo-50 p-4 rounded-lg shadow-sm">
