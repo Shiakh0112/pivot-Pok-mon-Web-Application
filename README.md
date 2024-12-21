@@ -24,7 +24,7 @@ Follow these steps to set up the project on your local machine:
 
 ### Clone the Repository
 ```bash
-git clone https://github.com/your-username/my-nextjs-app.git
+git clone https://github.com/Shiakh0112/pivot-Pok-mon-Web-Application.git
 cd my-nextjs-app
 ```
 
@@ -43,7 +43,7 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to see the app.
-
+Deploy: "https://pivot-pok-mon-web-application.vercel.app/"
 ---
 
 ## 🔧 Configuration
@@ -51,10 +51,6 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to see the a
 ### Tailwind CSS
 Tailwind is already configured in `tailwind.config.js`. Modify it as per your design requirements.
 
-### Pokémon Logo
-Replace `public/pokemon-logo.png` with your desired logo to customize the branding.
-
----
 
 ## 📂 Key Components
 
@@ -88,40 +84,14 @@ This project uses the [PokéAPI](https://pokeapi.co/) to fetch data about Pokém
 - **List Pokémon:** `https://pokeapi.co/api/v2/pokemon`
 - **Pokémon Details:** `https://pokeapi.co/api/v2/pokemon/{id}`
 
----
 
-## 🤝 Contributions
-
-Contributions are welcome! If you have suggestions for improvement:
-1. Fork the repo
-2. Create a feature branch (`git checkout -b feature-name`)
-3. Commit your changes (`git commit -m "Add some feature"`)
-4. Push to the branch (`git push origin feature-name`)
-5. Open a pull request
-
----
-
-## 📜 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-## 📸 Screenshots
-
-### Home Page
-![Home Page Screenshot](https://via.placeholder.com/800x400.png?text=Home+Page+Screenshot)
-
-### Pokémon Details Page
-![Details Page Screenshot](https://via.placeholder.com/800x400.png?text=Details+Page+Screenshot)
-
----
 
 ## 📝 Author
 
 **Your Name**  
-[GitHub Profile](https://github.com/your-username)  
+[GitHub Profile](https://github.com/Shiakh0112)  
 [Portfolio](https://your-portfolio-link.com)
+
 
 ---
 
